@@ -10,5 +10,5 @@ class AvailableItem extends Model
     use HasFactory;
     public $timestamps = false;
 
-    protected $guarded = [];
+    protected $guarded = ["id"];
 }

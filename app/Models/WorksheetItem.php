@@ -11,7 +11,7 @@ class WorksheetItem extends Model
     use HasFactory;
     public $timestamps = false;
 
-    protected $guarded = [];
+    protected $guarded = ["id"];
 
     public function item_template(): BelongsTo
     {
