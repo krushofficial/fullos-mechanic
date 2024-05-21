@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId("advisor_id")->index();
             $table->foreignId("mechanic_id")->nullable()->index();
             $table->string("plate");
-            $table->integer("year");
+            $table->string("make");
             $table->string("type");
             $table->string("owner_name");
             $table->string("owner_address");

@@ -34,7 +34,7 @@ new class extends Component {
                     "id",
                     "created_at",
                     "plate",
-                    "year",
+                    "make",
                     "type",
                     "owner_name",
                     "owner_address"
@@ -61,7 +61,7 @@ new class extends Component {
     public function createWorksheet(): void {
         $worksheet = ($this->worksheet = new Worksheet());
         $worksheet->plate = "?";
-        $worksheet->year = 2000;
+        $worksheet->make = "?";
         $worksheet->type = "?";
         $worksheet->advisor_id = auth()->user()->id;
         $worksheet->owner_name = "?";

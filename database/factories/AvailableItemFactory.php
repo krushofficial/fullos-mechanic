@@ -17,9 +17,9 @@ class AvailableItemFactory extends Factory
     public function definition(): array
     {
         return [
-            'type' => "procedure",
-            'nice_name' => fake()->name(),
-            'price' => 2990
+            'type' => fake()->randomElement(["procedure", "material", "part"]),
+            'nice_name' => ucfirst(fake()->word()),
+            'price' => fake()->numberBetween(1000, 20000)
         ];
     }
 }

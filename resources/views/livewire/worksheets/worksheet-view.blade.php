@@ -24,7 +24,7 @@ new class extends Component {
     public Worksheet $worksheet;
 
     public string $plate;
-    public int $year;
+    public string $make;
     public string $type;
     public string $owner_name;
     public string $owner_address;
@@ -56,7 +56,7 @@ new class extends Component {
         $worksheet = ($this->worksheet = Worksheet::find($this->worksheet_id));
 
         $this->plate = $worksheet->plate;
-        $this->year = $worksheet->year;
+        $this->make = $worksheet->make;
         $this->type = $worksheet->type;
         $this->owner_name = $worksheet->owner_name;
         $this->owner_address = $worksheet->owner_address;
@@ -102,7 +102,7 @@ new class extends Component {
         $worksheet = $this->worksheet;
 
         $worksheet->plate = $this->plate;
-        $worksheet->year = $this->year;
+        $worksheet->make = $this->make;
         $worksheet->type = $this->type;
         $worksheet->owner_name = $this->owner_name;
         $worksheet->owner_address = $this->owner_address;
@@ -130,7 +130,7 @@ new class extends Component {
             <p><span class="font-semibold">Munkalap azonosító (ID): </span>{{ $this->worksheet_id }}</p>
             <div class="space-y-2 ">
                 <p><span class="font-semibold">Gépjármű rendszáma: </span><x-text-input id="plate" type="text" class="w-64 h-6" wire:model="plate" disabled="{{ $this->closed || $this->not_advisor }}"/></p>
-                <p><span class="font-semibold">Gépjármű gyártmánya: </span><x-text-input id="year" type="number" min="0" class="w-64 h-6" wire:model="year" disabled="{{ $this->closed || $this->not_advisor }}"/></p>
+                <p><span class="font-semibold">Gépjármű gyártmánya: </span><x-text-input id="make" type="text" class="w-64 h-6" wire:model="make" disabled="{{ $this->closed || $this->not_advisor }}"/></p>
                 <p><span class="font-semibold">Gépjármű típusa: </span><x-text-input id="type" type="text" class="w-64 h-6" wire:model="type" disabled="{{ $this->closed || $this->not_advisor }}"/></p>
             </div>
             <div class="space-y-2">

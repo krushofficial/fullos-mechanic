@@ -17,8 +17,8 @@ class WorksheetItemFactory extends Factory
     public function definition(): array
     {
         return [
-            'worksheet_id' => 1,
-            'item_id' => 1,
+            'worksheet_id' => fake()->numberBetween(1, 10),
+            'item_id' => fake()->numberBetween(1, 10),
             'quantity' => fake()->numberBetween(1, 30)
         ];
     }

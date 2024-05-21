@@ -18,9 +18,9 @@ class WorksheetFactory extends Factory
     {
         return [
             'advisor_id' => 1,
-            'plate' => "ABC-123",
-            'year' => fake()->numberBetween(1990, 2024),
-            'type' => "Kia Sorento",
+            'plate' => strtoupper(fake()->bothify("???-###")),
+            'make' => fake()->randomElement(["Kia", "Opel", "BMW"]),
+            'type' => fake()->randomElement(["Stinger", "Astra", "3 Series"]),
             'owner_name' => fake()->name(),
             'owner_address' => fake()->address()
         ];
