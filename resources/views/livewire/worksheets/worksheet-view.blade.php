@@ -151,16 +151,24 @@ new class extends Component {
             <h3 class="font-semibold text-lg text-center text-gray-800 dark:text-gray-200">Végzett munka</h3>
             <div class="border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 shadow-sm">
                 <div class="border-x border-t w-full h-96 rounded-t-md overflow-auto p-3">
-                    <ul>
-                        @foreach($this->worksheet_items as $item)
-                            <li class="flex flex-row justify-between">
-                                <span>{{ $itype_name[$item->item_template->type] }}</span>
-                                <span>{{ $item->item_template->nice_name }}</span>
-                                <span>{{ $item->quantity }} {{ $itype_unit[$item->item_template->type] }}</span>
-                                <span>{{ $item->quantity * $item->item_template->price }} Ft</span>
-                            </li>
-                        @endforeach
-                    </ul>
+                    <table>
+                        <colgroup>
+                            <col span="1" class="w-1/12">
+                            <col span="1" class="w-6/12">
+                            <col span="1" class="w-2/12">
+                            <col span="1" class="w-3/12">
+                        </colgroup>
+                        <tbody>
+                            @foreach($this->worksheet_items as $item)
+                                <tr>
+                                    <td>{{ $itype_name[$item->item_template->type] }}</td>
+                                    <td class="text-center">{{ $item->item_template->nice_name }}</td>
+                                    <td class="text-center">{{ $item->quantity }} {{ $itype_unit[$item->item_template->type] }}</td>
+                                    <td class="text-end">{{ $item->quantity * $item->item_template->price }} Ft</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
                 <div class="border w-full rounded-b-md p-3 flex flex-col space-y-2">
                     <div class="flex flex-row justify-between">
