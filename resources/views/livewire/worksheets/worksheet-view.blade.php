@@ -126,7 +126,8 @@ new class extends Component {
     @if($worksheet_id)
         {{ $this->getWorksheet() }}
         <div class="p-6 text-gray-800 dark:text-gray-200 flex flex-col space-y-4">
-            <h2 class="font-bold text-lg text-center text-gray-800 dark:text-gray-200">Munkalap megtekintése</h2>
+            <h2 class="font-bold text-lg text-center text-gray-800 dark:text-gray-200 print:hidden">Munkalap megtekintése</h2>
+            <h2 class="font-bold text-lg text-center text-gray-800 dark:text-gray-200 hidden print:block">Munkalap másolat</h2>
             <p><span class="font-semibold">Munkalap azonosító (ID): </span>{{ $this->worksheet_id }}</p>
             <div class="space-y-2 ">
                 <p><span class="font-semibold">Gépjármű rendszáma: </span><x-text-input id="plate" type="text" class="w-64 h-6" wire:model="plate" disabled="{{ $this->closed || $this->not_advisor }}"/></p>
@@ -150,7 +151,7 @@ new class extends Component {
             </div>
             <h3 class="font-semibold text-lg text-center text-gray-800 dark:text-gray-200">Végzett munka</h3>
             <div class="border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 shadow-sm">
-                <div class="border-x border-t w-full h-96 rounded-t-md overflow-auto p-3">
+                <div class="border-x border-t print:border-b w-full h-96 print:h-auto rounded-t-md print:rounded-b-md overflow-auto p-3">
                     <table>
                         <colgroup>
                             <col span="1" class="w-1/12">
@@ -170,7 +171,7 @@ new class extends Component {
                         </tbody>
                     </table>
                 </div>
-                <div class="border w-full rounded-b-md p-3 flex flex-col space-y-2">
+                <div class="border w-full rounded-b-md p-3 flex flex-col space-y-2 print:hidden">
                     <div class="flex flex-row justify-between">
                         <select id="item_type" wire:model.live="item_type" {{ $this->closed || $this->not_mechanic ? 'disabled' : '' }} class="w-32 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
                             <option value="null"></option>
@@ -203,7 +204,7 @@ new class extends Component {
             <div class="flex flex-row w-full justify-end">
                 <p><span class="font-semibold">Összesített ár: </span>{{ $this->price }} Ft</p>
             </div>
-            <div class="flex flex-row w-full justify-end space-x-2">
+            <div class="flex flex-row w-full justify-end space-x-2 print:hidden">
                 <p><label class="font-semibold" for="paid_with">Fizetési mód: </label>
                     <select id="paid_with" wire:model.live="paid_with" {{ $this->closed || $this->not_advisor ? 'disabled' : '' }} class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
                         <option value="null">Még nem fizetett</option>
@@ -215,7 +216,7 @@ new class extends Component {
                     Lezárás
                 </x-danger-button>
             </div>
-            <div class="flex flex-row w-full justify-end space-x-2">
+            <div class="flex flex-row w-full justify-end space-x-2 print:hidden">
                 <x-danger-button x-on:click="$dispatch('close-modal', 'worksheet-view')">
                     Bezárás
                 </x-danger-button>
@@ -227,7 +228,7 @@ new class extends Component {
                 </x-primary-button>
             </div>
             @if($this->closed)
-            <p class="font-light text-sm text-center text-gray-800 dark:text-gray-200">Ez a munkalap már le lett zárva <i class="fa-regular fa-lock"></i></p>
+            <p class="font-light text-sm text-center text-gray-800 dark:text-gray-200 print:hidden">Ez a munkalap már le lett zárva <i class="fa-regular fa-lock"></i></p>
             @endif
         </div>
     @endif

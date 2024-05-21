@@ -75,7 +75,7 @@ new class extends Component {
 
 <section class="space-y-4">
     @if($preview!="true")
-        <div class="flex flex-col space-y-4 md:space-y-0 md:flex-row md:justify-between md:items-center">
+        <div class="flex flex-col space-y-4 md:space-y-0 md:flex-row md:justify-between md:items-center print:hidden">
             <div class="space-x-2">
                 <x-text-input id="search" class="w-64 h-8" type="text" name="search" wire:model.live.debounce="search"/>
                 <x-primary-button>
